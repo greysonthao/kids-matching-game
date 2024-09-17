@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Shuffle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -62,6 +64,7 @@ export const CardMatchingGame: React.FC = () => {
   const [matchedCards, setMatchedCards] = useState<number[]>([]);
   const [turns, setTurns] = useState(0);
   const [gameWon, setGameWon] = useState(false);
+  const { width, height } = useWindowSize();
 
   useEffect(() => {
     initializeGame();
@@ -69,11 +72,16 @@ export const CardMatchingGame: React.FC = () => {
 
   const initializeGame = () => {
     const imageUrls = [
-      "https://fastly.picsum.photos/id/804/200/300.jpg?hmac=iNvnrzdzAcNx5ZKyG3JWnH4EIYwl-9Lp_4WqWA4R5mo",
-      "https://fastly.picsum.photos/id/187/200/300.jpg?hmac=RGKQU40hHnXm-pBoMbUE5TDcy26DLc6CdcqednFcmB0",
-      "https://fastly.picsum.photos/id/755/200/300.jpg?hmac=CfzLROBA3atEQnBKXK5SeavNo-1QRwZRwcqZwwdBMdM",
-      "https://fastly.picsum.photos/id/279/200/300.jpg?hmac=fYDbVmnm7vDGt7SA51v-qMUKHIn7HKCp5v9d8Wx_SVM",
-      "https://fastly.picsum.photos/id/928/200/300.jpg?hmac=0vBcHV9dVfFTsvcFDn8PRUQiOaH72_2aaKnmlU1PHWk",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/Marshall.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/Rubble.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/chase.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/everest.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/plush.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/rocky.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/ryder.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/skye.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/turbot.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/zuma.webp",
     ];
 
     const shuffledCards = [...imageUrls, ...imageUrls]
@@ -118,6 +126,7 @@ export const CardMatchingGame: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
+      {gameWon && <Confetti width={width} height={height} />}
       <h1 className="text-3xl font-bold mb-4">Card Matching Game</h1>
       <div className="mb-4 flex flex-col items-center">
         <Button onClick={initializeGame} className="flex items-center mb-2">
