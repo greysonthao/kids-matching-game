@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Shuffle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,20 +15,20 @@ import {
 
 interface GameCard {
   id: number;
-  content: string;
+  imageUrl: string;
   isFlipped: boolean;
 }
 
 interface GameCardProps {
   id: number;
-  content: string;
+  imageUrl: string;
   isFlipped: boolean;
   onClick: (id: number) => void;
 }
 
 const GameCard: React.FC<GameCardProps> = ({
   id,
-  content,
+  imageUrl,
   isFlipped,
   onClick,
 }) => (
@@ -39,7 +40,19 @@ const GameCard: React.FC<GameCardProps> = ({
     }`}
     onClick={() => onClick(id)}
   >
-    <CardContent className="p-0">{isFlipped && content}</CardContent>
+    {/* (<Image src={imageUrl} alt="card" layout="fill" objectFit="cover" />) : (
+    <div className="card-back"></div>) */}
+    <CardContent className="p-0">
+      {isFlipped && (
+        <Image
+          src={imageUrl}
+          alt="card"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+      )}
+    </CardContent>
   </Card>
 );
 
@@ -55,12 +68,21 @@ export const CardMatchingGame: React.FC = () => {
   }, []);
 
   const initializeGame = () => {
-    //const emojis = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯"];
-    const emojis = ["🐶", "🐱", "🐭", "🐹", "🐰"];
+    const imageUrls = [
+      "https://fastly.picsum.photos/id/804/200/300.jpg?hmac=iNvnrzdzAcNx5ZKyG3JWnH4EIYwl-9Lp_4WqWA4R5mo",
+      "https://fastly.picsum.photos/id/187/200/300.jpg?hmac=RGKQU40hHnXm-pBoMbUE5TDcy26DLc6CdcqednFcmB0",
+      "https://fastly.picsum.photos/id/755/200/300.jpg?hmac=CfzLROBA3atEQnBKXK5SeavNo-1QRwZRwcqZwwdBMdM",
+      "https://fastly.picsum.photos/id/279/200/300.jpg?hmac=fYDbVmnm7vDGt7SA51v-qMUKHIn7HKCp5v9d8Wx_SVM",
+      "https://fastly.picsum.photos/id/928/200/300.jpg?hmac=0vBcHV9dVfFTsvcFDn8PRUQiOaH72_2aaKnmlU1PHWk",
+    ];
 
-    const shuffledCards = [...emojis, ...emojis]
+    const shuffledCards = [...imageUrls, ...imageUrls]
       .sort(() => Math.random() - 0.5)
-      .map((emoji, index) => ({ id: index, content: emoji, isFlipped: false }));
+      .map((imageUrl, index) => ({
+        id: index,
+        imageUrl: imageUrl,
+        isFlipped: false,
+      }));
     setCards(shuffledCards);
     setFlippedCards([]);
     setMatchedCards([]);
@@ -82,7 +104,7 @@ export const CardMatchingGame: React.FC = () => {
     if (newFlippedCards.length === 2) {
       setTurns(turns + 1);
       const [firstCardId, secondCardId] = newFlippedCards;
-      if (cards[firstCardId].content === cards[secondCardId].content) {
+      if (cards[firstCardId].imageUrl === cards[secondCardId].imageUrl) {
         setMatchedCards([...matchedCards, firstCardId, secondCardId]);
         setFlippedCards([]);
         if (matchedCards.length + 2 === cards.length) {
@@ -108,7 +130,7 @@ export const CardMatchingGame: React.FC = () => {
           <GameCard
             key={card.id}
             id={card.id}
-            content={card.content}
+            imageUrl={card.imageUrl}
             isFlipped={
               flippedCards.includes(card.id) || matchedCards.includes(card.id)
             }
