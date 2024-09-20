@@ -113,14 +113,14 @@ export const CardMatchingGame = () => {
     const imageUrls = [
       "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/Marshall.webp",
       "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/Rubble.webp",
-      // "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/chase.webp",
-      // "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/everest.webp",
-      // "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/plush.webp",
-      // "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/rocky.webp",
-      // "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/ryder.webp",
-      // "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/skye.webp",
-      // "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/turbot.webp",
-      // "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/zuma.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/chase.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/everest.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/plush.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/rocky.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/ryder.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/skye.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/turbot.webp",
+      "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/zuma.webp",
     ];
 
     const shuffledCards = [...imageUrls, ...imageUrls]
