@@ -35,12 +35,14 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ leaderboard }) => {
   return (
     <div className="mb-4">
       <Collapsible>
-        <CollapsibleTrigger>
-          <button className="text-xl font-bold text-white bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded">
-            Leaderboard
-          </button>
-        </CollapsibleTrigger>
-        <div className="mb-4"></div>
+        <div className="flex justify-center">
+          <CollapsibleTrigger>
+            <button className="font-bold text-white bg-blue-500 hover:bg-blue-700 py-1 px-2 rounded flex items-center">
+              + Leaderboard +
+            </button>
+          </CollapsibleTrigger>
+        </div>
+        <div className="mb-2"></div>
         <CollapsibleContent>
           <ul className="list-none p-0">
             {leaderboard.map((entry, index) => (

@@ -121,6 +121,8 @@ export const CardMatchingGame = () => {
       "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/skye.webp",
       "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/turbot.webp",
       "https://raw.githubusercontent.com/greysonthao/kids-matching-game/main/images/pawpatrol/zuma.webp",
+      // "https://raw.githubusercontent.com/greysonthao/kids-matching-game/refs/heads/main/images/pawpatrol/roxi.webp",
+      // "https://raw.githubusercontent.com/greysonthao/kids-matching-game/refs/heads/main/images/pawpatrol/rex.webp",
     ];
 
     const shuffledCards = [...imageUrls, ...imageUrls]
@@ -187,7 +189,7 @@ export const CardMatchingGame = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
       {gameWon && <Confetti width={width} height={height} />}
-      <h1 className="text-3xl font-bold mb-4 text-center">
+      <h1 className="text-2xl font-bold mb-4 text-center">
         Paw Patrol Matching Game
       </h1>
       <div>
@@ -201,7 +203,7 @@ export const CardMatchingGame = () => {
         </Button>
         <span className="text-xl font-semibold">Turns: {turns}</span>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+      <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-2">
         {cards.map((card) => (
           <GameCard
             key={card.id}
